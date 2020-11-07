@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  webserver:
+    image: 8.0.0-webserver
+    build:
+      context: ./docker/webserver
+    container_name: 'supportutils-webserver'
+    ports:
+      - "8080:80"
+    links:
+      - mysql
+    volumes: 
+      - ./www/supportutils-api:/var/www/html
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
+      - ./config/vhosts:/etc/apache2/sites-enabled
+      #- ${LOG_DIR-./logs/apache2}:/var/log/apache2
+  react:
+    image: supportutils-react
+    build:
+      context: ./docker/react
+    container_name: 'supportutils-react'
+    ports:
+      - "80:3000"
+    links:
+      - mysql
+    volumes: 
+      - ./www/supportutils:/var/www/html
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
+      - ./config/vhosts:/etc/apache2/sites-enabled
+      #- ${LOG_DIR-./logs/apache2}:/var/log/apache2
+  mysql:
+    build: ./docker/mysql
+    container_name: 'supportutils-mysql'
+    ports:
+      - "3306:3306"
+    volumes: 
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: support
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: 'supportutils-phpmyadmin'
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - '9999:80'
+    volumes: 
+      - /sessions
