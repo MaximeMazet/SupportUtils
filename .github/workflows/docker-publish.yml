@@ -31,8 +31,11 @@ jobs:
           cp -a www/supportutils-api test/api/
           ls -la test/api
           if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
+          
+            cp -a www/supportutils-api test/api/
+            ls -la test/api
+            #docker-compose --file docker-compose.test.yml build
+            #docker-compose --file docker-compose.test.yml run sut
           else
             docker build . --file Dockerfile
           fi
