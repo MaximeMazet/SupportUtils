@@ -28,12 +28,12 @@ jobs:
 
       - name: Run tests
         run: |
-          cp -a www/supportutils-api test/api/
-          ls -la test/api
           if [ -f docker-compose.test.yml ]; then
           
             cp -a www/supportutils-api test/api/
             ls -la test/api
+            ls -la test/api/supportutils-api
+            ls -la www/supportutils-api
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
           else
