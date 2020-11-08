@@ -37,6 +37,7 @@ WORKDIR /var/www/html
 
 COPY ./ ./
 
+
 EXPOSE 80
 
 CMD ["bash", "bin/test.sh"]
