@@ -35,6 +35,8 @@ RUN docker-php-ext-install bcmath
 
 WORKDIR /var/www/html
 
+RUN ls
+
 COPY ../../www/supportutils-api/ ./
 
 EXPOSE 80
