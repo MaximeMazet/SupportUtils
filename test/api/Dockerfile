@@ -37,6 +37,7 @@ WORKDIR /var/www/html
 
 COPY ./supportutils-api/ ./
 
+RUN ls -la
 
 EXPOSE 80
 
