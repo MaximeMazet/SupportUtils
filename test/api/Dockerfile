@@ -37,8 +37,6 @@ WORKDIR /var/www/html
 
 COPY ./ ./
 
-RUN ls -la
-
 EXPOSE 80
 
 CMD ["bash", "bin/test.sh"]
