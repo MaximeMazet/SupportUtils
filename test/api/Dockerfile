@@ -35,7 +35,7 @@ RUN docker-php-ext-install bcmath
 
 WORKDIR /var/www/html
 
-ADD supportutils-api ./
+ADD supportutils-api /var/www/html
 
 RUN ls -la
 
