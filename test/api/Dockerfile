@@ -33,8 +33,6 @@ RUN docker-php-ext-install gettext
 RUN docker-php-ext-install bcmath
 
 
-RUN apt-get -y install mysql-client mysql-server
-
 WORKDIR /var/www/html
 
 COPY ../../www/supportutils-api/ ./
