@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
-	    w
+            w
             set -x
             docker-compose up -d
 
