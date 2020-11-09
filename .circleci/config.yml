@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
-            w
+            export DOCKER_HOST=127.0.0.1
             set -x
             docker-compose up -d
 
