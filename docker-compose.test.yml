@@ -1,8 +1,0 @@
-version: '3.1'
-services:
-  sut:
-    build:
-      context: test/api
-      dockerfile: Dockerfile
-    volumes:
-      - ./www/supportutils-api:/var/www/html:delegated
