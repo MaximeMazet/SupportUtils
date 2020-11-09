@@ -24,7 +24,6 @@ jobs:
       - run: apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 
       - run: apt upgrade -y
-      - run: apt install -y make
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: Install Docker client
@@ -41,9 +40,6 @@ jobs:
             set -x
             curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
-      - run:
-          name: Build service
-          command: make
 
       - run:
           name: Start container and verify it's working
